@@ -1,0 +1,488 @@
+\documentclass[10pt,a4paper]{article}
+
+%%%%%%%%% Packages %%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage[a4paper, total={7in, 9.5in}]{geometry}
+\usepackage[linesnumbered,boxruled,commentsnumbered]{algorithm2e}
+\usepackage[matrix,tips,graph,curve]{xy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{fact}[equation]{Fact}
+\newtheorem{facts}[equation]{Facts}
+\newtheorem*{theoremA}{Theorem A}
+\newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
+\newtheorem*{theoremD}{Theorem D}
+\newtheorem*{theoremE}{Theorem E}
+\newtheorem*{theoremF}{Theorem F}
+\newtheorem*{theoremG}{Theorem G}
+\newtheorem*{theoremH}{Theorem H}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{definitions}[equation]{Definitions}
+
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{example}[equation]{Example}
+\newtheorem{examples}[equation]{Examples}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{question}[equation]{Question}
+\newtheorem{assumption}[equation]{Assumption}
+\newtheorem*{claim}{Claim}
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Problem}
+
+
+\theoremstyle{remark}
+\newtheorem{answer}{Answer}
+\newtheorem*{answer*}{Answer}
+
+%%%%%% letters %%%%
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fD}{\mathfrak{D}}
+\newcommand{\fE}{\mathfrak{E}}
+\newcommand{\fF}{\mathfrak{F}}
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fH}{\mathfrak{H}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fL}{\mathfrak{L}}
+\newcommand{\fM}{\mathfrak{M}}
+\newcommand{\fN}{\mathfrak{N}}
+\newcommand{\fO}{\mathfrak{O}}
+\newcommand{\fP}{\mathfrak{P}}
+\newcommand{\fQ}{\mathfrak{Q}}
+\newcommand{\fR}{\mathfrak{R}}
+\newcommand{\fS}{\mathfrak{S}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\fU}{\mathfrak{U}}
+\newcommand{\fV}{\mathfrak{V}}
+\newcommand{\fW}{\mathfrak{W}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\fY}{\mathfrak{Y}}
+\newcommand{\fZ}{\mathfrak{Z}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fc}{\mathfrak{c}}
+\newcommand{\fd}{\mathfrak{d}}
+\newcommand{\fe}{\mathfrak{e}}
+\newcommand{\ff}{\mathfrak{f}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\ffi}{\mathfrak{i}} %%\fi is defined
+\newcommand{\fj}{\mathfrak{j}}
+\newcommand{\fk}{\mathfrak{k}}
+\newcommand{\fl}{\mathfrak{l}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fo}{\mathfrak{o}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\fr}{\mathfrak{r}}
+\newcommand{\fs}{\mathfrak{s}}
+\newcommand{\ft}{\mathfrak{t}}
+\newcommand{\fu}{\mathfrak{u}}
+\newcommand{\fv}{\mathfrak{v}}
+\newcommand{\fw}{\mathfrak{w}}
+\newcommand{\fx}{\mathfrak{x}}
+\newcommand{\fy}{\mathfrak{y}}
+\newcommand{\fz}{\mathfrak{z}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sA}{\mathcal{A}\,}
+\newcommand{\sB}{\mathcal{B}\,}
+\newcommand{\sC}{\mathcal{C}}
+\newcommand{\sD}{\mathcal{D}\,}
+\newcommand{\sE}{\mathcal{E}\,}
+\newcommand{\sF}{\mathcal{F}\,}
+\newcommand{\sG}{\mathcal{G}\,}
+\newcommand{\sH}{\mathcal{H}}
+\newcommand{\sI}{\mathcal{I}\,}
+\newcommand{\sJ}{\mathcal{J}\,}
+\newcommand{\sK}{\mathcal{K}\,}
+\newcommand{\sL}{\mathcal{L}\,}
+\newcommand{\sM}{\mathcal{M}\,}
+\newcommand{\sN}{\mathcal{N}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\sP}{\mathcal{P}\,}
+\newcommand{\sQ}{\mathcal{Q}\,}
+\newcommand{\sR}{\mathcal{R}}
+\newcommand{\sS}{\mathcal{S}}
+\newcommand{\sT}{\mathcal{T}\,}
+\newcommand{\sU}{\mathcal{U}\,}
+\newcommand{\sV}{\mathcal{V}\,}
+\newcommand{\sW}{\mathcal{W}\,}
+\newcommand{\sX}{\mathcal{X}\,}
+\newcommand{\sY}{\mathcal{Y}\,}
+\newcommand{\sZ}{\mathcal{Z}\,}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IB}{\mathbb{B}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\ID}{\mathbb{D}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IG}{\mathbb{G}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\IK}{\mathbb{K}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\IM}{\mathbb{M}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IO}{\mathbb{O}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IS}{\mathbb{S}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IU}{\mathbb{U}}
+\newcommand{\IV}{\mathbb{V}}
+\newcommand{\IW}{\mathbb{W}}
+\newcommand{\IX}{\mathbb{X}}
+\newcommand{\IY}{\mathbb{Y}}
+\newcommand{\IZ}{\mathbb{Z}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\tA}{\mathrm {A}}
+\newcommand{\tB}{\mathrm {B}}
+\newcommand{\tC}{\mathrm {C}}
+\newcommand{\tD}{\mathrm {D}}
+\newcommand{\tE}{\mathrm {E}}
+\newcommand{\tF}{\mathrm {F}}
+\newcommand{\tG}{\mathrm {G}}
+\newcommand{\tH}{\mathrm {H}}
+\newcommand{\tI}{\mathrm {I}}
+\newcommand{\tJ}{\mathrm {J}}
+\newcommand{\tK}{\mathrm {K}}
+\newcommand{\tL}{\mathrm {L}}
+\newcommand{\tM}{\mathrm {M}}
+\newcommand{\tN}{\mathrm {N}}
+\newcommand{\tO}{\mathrm {O}}
+\newcommand{\tP}{\mathrm {P}}
+\newcommand{\tQ}{\mathrm {Q}}
+\newcommand{\tR}{\mathrm {R}}
+\newcommand{\tS}{\mathrm {S}}
+\newcommand{\tT}{\mathrm {T}}
+\newcommand{\tU}{\mathrm {U}}
+\newcommand{\tV}{\mathrm {V}}
+\newcommand{\tW}{\mathrm {W}}
+\newcommand{\tX}{\mathrm {X}}
+\newcommand{\tY}{\mathrm {Y}}
+\newcommand{\tZ}{\mathrm {Z}}
+%%%%%%% macros %%%%%
+
+%% my definitions %%%
+
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\tr}{\mathrm{tr}}
+%\newcommand{\ind}{\mathrm{ind}}
+
+\renewcommand{\index}{\mathrm{index \,}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Trace}{\mathrm{Trace}\,}
+\newcommand{\Res}{\mathrm{Res}\,}
+\newcommand{\rank}{\mathrm{rank}}
+%\renewcommand{\dim}{\mathrm{dim}}
+
+\renewcommand{\deg}{\mathrm{deg}}
+\newcommand{\spin}{\rm Spin}
+\newcommand{\Spin}{\rm Spin}
+\newcommand{\erfc}{\rm erfc\,}
+\newcommand{\sgn}{\rm sgn\,}
+\newcommand{\Spec}{\rm Spec\,}
+\newcommand{\diag}{\rm diag\,}
+\newcommand{\Fix}{\mathrm{Fix}}
+\newcommand{\Ker}{\mathrm{Ker \,}}
+\newcommand{\Coker}{\mathrm{Coker \,}}
+\newcommand{\Sym}{\mathrm{Sym \,}}
+\newcommand{\Hess}{\mathrm{Hess \,}}
+\newcommand{\grad}{\mathrm{grad \,}}
+\newcommand{\Center}{\mathrm{Center}}
+\newcommand{\Lie}{\mathrm{Lie}}
+\newcommand{\ch}{\rm ch} % Chern Character
+\newcommand{\rk}{\rm rk}
+\newcommand{\sign}{\rm sign}
+\renewcommand\dim{{\rm dim\,}}
+\renewcommand\det{{\rm det\,}}
+\newcommand{\dimKrull}{{\rm Krulldim\,}}
+\newcommand\Rep{\mathrm{Rep}}
+\newcommand\Hilb{\mathrm{Hilb}}
+\newcommand\vol{\mathrm{vol}}
+\newcommand\QED{\hfill $\Box$} %{\bf QED}}
+\newcommand\Pf{\nonintend{\em Proof. }}
+\newcommand\reals{{\mathbb R}}
+\newcommand\complexes{{\mathbb C}}
+\renewcommand\i{\sqrt{-1}}
+\renewcommand\Re{\mathrm Re}
+\renewcommand\Im{\mathrm Im}
+\newcommand\integers{{\mathbb Z}}
+\newcommand\quaternions{{\mathbb H}}
+\newcommand\iso{{\cong}}
+\newcommand\tensor{{\otimes}}
+\newcommand\Tensor{{\bigotimes}}
+\newcommand\union{\bigcup}
+\newcommand\onehalf{\frac{1}{2}}
+%\newcommand\Sym[1]{{Sym^{#1}(\complexes^2)}}
+\newcommand\lie[1]{{\mathfrak #1}}
+\renewcommand\fk{\mathfrak{K}}
+\newcommand\smooth{\mathcal{C}^{\infty}}
+\newcommand\trivial{{\mathbb I}}
+\newcommand\widebar{\overline}
+
+%%%%%Delimiters%%%%
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+%\renewcommand{\(}{\left(}
+%\renewcommand{\)}{\right)}
+
+
+%%%% Different kind of derivatives %%%%%
+\newcommand{\delbar}{\bar{\partial}}
+\newcommand{\pdu}{\frac{\partial}{\partial u}}
+%\newcommand{\pd}[1][2]{\frac{\partial #1}{\partial #2}}
+
+%%%%% Arrows %%%%%
+\newcommand{\ra}{\rightarrow}                   % right arrow
+%\newcommand{\lra}{\longrightarrow}              % long right arrow
+%\renewcommand{\la}{\leftarrow}                    % left arrow
+%\newcommand{\lla}{\longleftarrow}               % long left arrow
+%\newcommand{\ua}{\uparrow}                     % long up arrow
+%\newcommand{\na}{\nearrow}                      %  NE arrow
+%\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
+%\newcommand{\llla}[1]{\stackrel{#1}{\lla}}      % labeled long left arrow
+%\newcommand{\lua}[1]{\stackrel{#1}{\ua}}      % labeled  up arrow
+%\newcommand{\lna}[1]{\stackrel{#1}{\na}}      % labeled long NE arrow
+
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\tto}{\longmapsto}
+\def\llra{\longleftrightarrow}
+
+\def\d/{/\mspace{-6.0mu}/}
+\newcommand{\git}[3]{#1\d/_{\mspace{-4.0mu}#2}#3}
+\newcommand\zetahilb{\zeta_{{\text{Hilb}}}}
+\def\Fy{\sF \mspace{-3.0mu} \cdot \mspace{-3.0mu} y}
+\def\tv{\tilde{v}}
+\def\tw{\tilde{w}}
+\def\wt{\widetilde}
+\def\wtilde{\widetilde}
+\def\what{\widehat}
+
+%%%%%%%%%%%%%%%%%%% Mark's definitions %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\frakg}{\mbox{\frakturfont g}}
+\newcommand{\frakk}{\mbox{\frakturfont k}}
+\newcommand{\frakp}{\mbox{\frakturfont p}}
+\newcommand{\q}{\mbox{\frakturfont q}}
+\newcommand{\frakn}{\mbox{\frakturfont n}}
+\newcommand{\frakv}{\mbox{\frakturfont v}}
+\newcommand{\fraku}{\mbox{\frakturfont u}}
+\newcommand{\frakh}{\mbox{\frakturfont h}}
+\newcommand{\frakm}{\mbox{\frakturfont m}}
+\newcommand{\frakt}{\mbox{\frakturfont t}}
+\newcommand{\G}{\Gamma}
+\newcommand{\g}{\gamma}
+\newcommand{\fraka}{\mbox{\frakturfont a}}
+\newcommand{\db}{\bar{\partial}}
+\newcommand{\dbs}{\bar{\partial}^*}
+\newcommand{\p}{\partial}
+
+%%%%%%%%%%%%% new definitions for the positive mass paper %%%%%%%%%
+
+\newcommand{\sperp}{{\scriptscriptstyle \perp}}
+
+%%%%%%%%%%%%% My definitions %%%%%%%%%%%%%%%%%
+
+\newcommand{\isom}{\cong}
+\newcommand{\td}{\tilde}
+
+
+%%%%%%%% Page Layout %%%%%%%%
+
+\linespread{1.065}
+
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+\begin{document}
+%
+
+%%%%%%%% Title %%%%%%%
+\title{Math 603 - Representation Theory}
+\subtitle{Homework 5}
+\author{Feng Gui}
+\date{\today}
+
+%%%%%%%% Headers and Footers %%%%%%%%
+
+\fancypagestyle{plain}{%
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhf{}%
+  \rfoot{PAGE \thepage}
+}
+
+\pagestyle{plain}
+
+\makeatletter
+\let\runlhead\@author
+\let\runrhead\@title
+\makeatother
+
+\renewcommand{\headrulewidth}{1.5pt}
+\lhead{\runlhead} %%%% Use \runlhead to put author on left header. Manually put subtitle if there is one
+\chead{}
+\rhead{\runrhead}
+
+\lfoot{}
+\cfoot{}
+
+%%%%%%%% Make Title %%%%%%%%
+
+\maketitle
+
+%%%%%%%% Body %%%%%%%%
+
+\section*{Exercise 3}
+\label{sec:Exercise 3}
+
+
+\begin{problem*}1
+\end{problem*}
+
+\begin{answer*} \hfill
+
+(i) Checked.
+
+(ii) The norm is $z\bar{z}+w\bar{w}$, which is a non-negative real number. So the image is $\IR^+\cup \{0\}$.
+
+(iii) If $det(h) = z\bar{z}+w\bar{w} \not = 0$. Then let the inverse of $\begin{pmatrix}z & w \\ -\bar{w} & \bar{z} \end{pmatrix}$ is
+\[\frac{1}{z\bar{z}+w\bar{w}}\begin{pmatrix} \bar{z} & -w \\ \bar{w} & z \end{pmatrix}\]
+
+(iv) $\mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = (-1, 0) = -1$ and $\mathbf{ij} = \mathbf{k}, \mathbf{ji} = (0, -i) = -\mathbf{k}$.
+
+(v) The conjugate of $\mathbf{i}$, $\mathbf{j}$, $\mathbf{k}$ are $-\mathbf{i}$, $-\mathbf{j}$,  $-\mathbf{k}$ respectively.
+
+(vi) $h^*h= det(h)I$ where $I$ is the identity of $GL_2(\IC)$.
+
+(vii) $\{1,\mathbf{i},\mathbf{j},\mathbf{k}\}$.\\
+
+\end{answer*}
+
+
+\begin{problem*} 2
+\end{problem*}
+
+\begin{answer*} \hfill
+
+(i) Reduced norm $n(z,w) = z\bar{z}+w\bar{w} = a^2+b^2+c^2+d^2$.
+
+(ii) According to (i), the reduced norm equals to $1$ means $a^2+b^2+c^2+d^2 = 1$. So it is diffeomorphic to unit $S^3$ in $\IR^4$. That also means it is diffeomorphic to $S^3$ in general.
+
+(iii) Yes. $h^* = h^{-1}$ in this case.
+
+(iv) Yes. It is a closed subgroup of $GL_2(\IC)$. It is closed topologically since $1$ is closed in $\IR^\times$ and $det$ is a continuous map. Therefore the $\IH_1$ forms a Lie group.
+
+(v) They are the same. Both are the unitary group of $GL_1(\IH)$. \\
+\end{answer*}
+
+\begin{problem*}3
+\end{problem*}
+
+\begin{answer*} \hfill
+
+(i) Suppose we have $A = \begin{pmatrix} z_1 & z_2 \\ z_3 & z_4 \end{pmatrix}$. Then we can use the equation $\bar{A}^T A = 1$ and $det(A) = 1$ to solve $z_4$ and $z_3$ in terms of $z_1$ and $z_2$. We have that $z_4 = \bar{z_1}$ and $z_3 = -\bar{z_2}$. This shows that $SU(2)$ is actually the Hamiltonian quaternions of reduced norm 1, i.e. $SU(2) = \IH_1$.
+
+(ii) As shown in problem 2, since $SU(2) = \IH_1$, it is diffeomorphic to $S^3$.
+
+(iii) No. Because the image $det$ map of $U(2)$ is $U(1)$ thich is not isomorphic to $\IR^\times$ which is the image of $det$ map of $\IH$. \\
+
+\end{answer*}
+
+\begin{problem*} 4
+\end{problem*}
+
+\begin{answer*} \hfill
+
+(i) Clearly trace maps $h = \begin{pmatrix}z & w\\ -\bar{w} & \bar{z}\end{pmatrix}$ to a real number $z+\bar{z} = 2\mathbf{Re}(z)$. It is symmetric since $\tr(AB) = \sum_{i,j} a_{ij}b{ji} = \sum_{i,j} b_{ji}a_{ij} = \tr(BA)$. It is also bilinear since $\tr(aA) = a\tr(A)$ and $A(aB) = (aA)B$ for a real number $a$.
+Therefore it is a symmetric bilinear form.
+
+(ii) $\tr(AB) = -x_1y_1-x_2y_2-x_3y_3$.
+
+(iii) Yes. Notice that $\{1, \mathbf{i}, \mathbf{j}, \mathbf{k}\}$ is a basis for $\IH$ and $\mathbf{i},\, \mathbf{j}, \, \mathbf{k}$ has 0 trace. So $\II$ is spanned by $\{\mathbf{i},\mathbf{j},\mathbf{k}\}$. Since it is a $\IR$ vector space. Therefore $GL(\II)$ has entries in $\IR$
+and it is isomorphic to $GL_3(\IR)$. Also notice that $\tr$ respect to the basis $\{\mathbf{i},\mathbf{j},\mathbf{k}\}$ is just the natural inner product in $\IR^3$ with a negative sign. So $\{A\in GL(\II) | (Ah_1,Ah_2) = (h_1,h_2)\}$ is just the orthonormoal group in $GL(\II) \isom GL_3(\IR)$. And if we require $det(A) = 1$, it is just the special orthogonal group of $GL_(\II)$.
+Therefore $SO(3)\isom G$.
+
+(iv) Check two condition of group action:
+(a) $e*l = ele^{-1} = ele = l$, where $e$ is the identity of $H^\times \subset GL_2(\IC)$.
+(b) $h_1*(h_2*l) = h_1*(h_2lh_2^{-1}) = h_1(h_2lh_2^{-1})h_1^{-1} = (h_1h_2)l(h_1h_2)^{-1} = (h_1h_2)*l$
+
+Therefore, it is an action.
+
+(v) Note that for $h\in \IH_1$ and $l_1,l_2\in \II$, we have that $(h*l_1,h*l_2) = \tr(hl_1h^{-1}hl_2h^{-1}) = \tr(hl_1l_2h^{-1}) = (hl_1l_2, h^{-1}) = (h^{-1},hl_1l_2) = \tr(l_1l_2) = (l_1,l_2)$. We also know that $det(h) = 1$ for any $h\in \IH_1$.
+Therefore for any $h$, we have a unique $A\in G$ such that $h*l = Al$ for any $l\in \II$. The mapping $h$ to $A$ is a Lie group homomorphism. We can also see this as conjugation homomophism $H^\times\ra Aut(\IH)$ and it fixes $\II$.
+
+(vi) $\IH_1$ has dimension $3$ and $G\isom SO(3)$ has dimension $3$ as well.
+
+(vii) Since both $1$ and $-1$ in $\IH^\times$ maps to $Id \in SO(3)$, the kernel is not trivial. So it is not a isomorphism.
+
+(viii) Notice that the kernel of the homomorphism is actually $\{1,-1\}\subset \IH^\times$. Since this is discrete, the preimage of any open set $V\in SO(3)$ is disjoint in $\IH^\times \isom SU(2)$. Therefore it is a covering map. In fact $SU(2)$ being diffeomorphic to $S^3$ and the kernel being isomorphic to $\IZ/2\IZ$ implies $SO(3)$ is diffeomorphic to $\IR P^3$. \\
+\end{answer*}
+
+\section*{Lie Algebras}
+\label{sec:Lie Algebras}
+
+\begin{problem*} 4.4
+\end{problem*}
+
+\begin{answer*}\hfill
+
+(i) Let $X= \sum_{i=1}^n a_i \frac{\p}{\p x_i}$ and $Y = \sum_{j=1}^n b_j \frac{\p}{\p x_j}$ where $a_i$ and $b_j$ are real numbers. Then for $h\in \sC^\infty(\IR^n)$,
+\[[X,Y]h = \sum_{i,j} (a_i \frac{\p b_j}{\p x_i}\frac{\p}{\p x_j}  - b_j \frac{\p a_i}{\p x_j}\frac{\p}{\p x_i})(h) = 0\]
+Therefore it is a Lie subalgebra.
+
+(ii) By (i), it is abelian.
+
+(iii) Yes. For $X= \sum_{i=1}^n a_i \frac{\p}{\p x_i}$ and $Y = \sum_{j=1}^n f_j \frac{\p}{\p x_j}$ where $a_i\in IR$ and $f_j\in \sC^\infty(\IR^n)$. Then,
+\[[X,Y] = \sum_{i,j} a_i\frac{\p f_j}{\p x_i}\frac{\p }{\p x_j} \in Der(\sC^\infty(\IR^n))\]
+\end{answer*}
+
+\end{document}
